@@ -52,24 +52,43 @@ body {
 	justify-content: right;
 }
 
+.menu-dropdown {
+	display: inline-block;
+	position: relative;
+}
+
+.menu-dropdown-options {
+	display: none;
+	position: absolute;
+	overflow: auto;
+	width: 100%;
+}
+
+.menu-dropdown:hover .menu-dropdown-options {
+	display: block;
+}
+
 .menu-item {
 	display: flex;
 	align-items: center;
 
 	height: 100%;
 
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
 
 	background-color: white;
 	color:black;
 
 	transition: background-color 0.25s;
 }
-.menu-item:hover {
-	background-color: rgb(235, 235, 235);
+.menu-item.dropdown {
+	border: 1px solid #e7e7e7;
+	padding: 5px;
 }
-
+.menu-item:hover {
+	background-color: #e7e7e7;
+}
 .menu-item.active {
 	background-color: dodgerblue;
 	color: white;
@@ -82,16 +101,47 @@ body {
 .content {
 	flex-grow: 1;
 
-	border: 2px solid;
+	background-color: #f6f6f6;
+
+	border: 1px solid #e7e7e7;
 	border-bottom: 0px;
 	border-left: 0px;
 	border-right: 0px;
+
+	padding: 20px;
+}
+.content-item {
+	padding: 10px;
+	background-color: white;
+
+	border: 1px solid #e7e7e7;
+}
+
+.nice-button {
+	background-color: dodgerblue;
+	color: white;
+
+	border: 0px;
+	border-radius: 3px;
+	padding: 5px;
+
+	transition: background-color 0.25s;
+}
+.nice-button:hover {
+	background-color: rgb(91, 173, 255);
+}
+.nice-button:active {
+	background-color: dodgerblue;
 }
 
 .footer {
-	border: 2px solid;
+	border: 1px solid #e7e7e7;
 	border-left: 0px;
 	border-right: 0px;
 	border-bottom: 0px;
+
+	padding: 5px;
+
+	text-align: center;
 }
 
