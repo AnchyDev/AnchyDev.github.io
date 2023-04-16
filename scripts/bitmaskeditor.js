@@ -54,5 +54,4 @@ button.onclick = function() {
     innerHtml = "<h3>Bitmask: " + getBitmaskFromMasks(bitmasks) + " </h3>";
     output.innerHTML = innerHtml;
   };
-
 };

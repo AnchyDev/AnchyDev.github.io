@@ -60,7 +60,6 @@ class PageMenu extends HTMLElement
             }
 
             menuButton.addEventListener("click", function() {
-                console.log("Loading page " + index);
                 document.getElementsByTagName("page-container")[0].loadPage(index);
             });
         }
