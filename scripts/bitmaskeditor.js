@@ -33,9 +33,7 @@ button.onclick = function() {
   }
   else
   {
-    console.log(bitmaskDefinition);
     var bitmasks = getBitmasksFromInput(bitmaskDefinition);
-    console.log(bitmasks);
 
     bitmaskMessage.innerHTML = "";
 
