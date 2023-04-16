@@ -2,7 +2,7 @@ class PageDefinitions
 {
     static pages = {
         0: { name: "home", nice_name: "Home", href: "./pages/home.html" },
-        1: { name: "bit-editor", nice_name: "Bit Editor", href: "./pages/biteditor.html" },
+        1: { name: "bit-editor", nice_name: "Bit Editor", href: "./pages/biteditor.html", scripts: [ "./scripts/components/c-bitmask-editor.js" ] },
         2: { name: "contact", nice_name: "Contact", href: "./pages/contact.html" }
     }
 }
@@ -17,14 +17,22 @@ class PageContainer extends HTMLElement
     }
     async loadPageContent(index)
     {
-        var href = this.getPage(index);
-        var content = await fetch(href).then(response => response.text());
+        let href = this.getPage(index);
+        let content = await fetch(href).then(response => response.text());
         
         return content;
     }
     async loadPage(index)
     {
-        var content = await this.loadPageContent(index);
+        let content = await this.loadPageContent(index);
+        let scripts = PageDefinitions.pages[index].scripts;
+        for(let script in scripts)
+        {
+            let scriptSrc = scripts[script];
+            let scriptTag = document.createElement('script');
+            scriptTag.src = scriptSrc;
+            this.appendChild(scriptTag);
+        }
         this.innerHTML = content;
     }
 
@@ -38,10 +46,10 @@ class PageMenu extends HTMLElement
 {
     async loadMenu()
     {
-        var innerHtml = '<div class="menu">';
-        for(var index in PageDefinitions.pages)
+        let innerHtml = '<div class="menu">';
+        for(let index in PageDefinitions.pages)
         {
-            var page = PageDefinitions.pages[index];
+            let page = PageDefinitions.pages[index];
             innerHtml += '<div id="page-' + page.name + '" class="menu-item">' + page.nice_name + '</div>';
         }
         innerHtml += '</div>';
