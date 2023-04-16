@@ -30,7 +30,6 @@ class PageContainer extends HTMLElement
 
     connectedCallback()
     {
-        this.innerHTML = '<img src="./images/loading.gif"/>';
         this.loadPage(this._currentPageIndex);
     }
 }
