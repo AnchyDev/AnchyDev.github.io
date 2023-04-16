@@ -8,6 +8,7 @@
 		<meta property="og:image" content="https://anchydev.github.io/images/azstatbooster.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="./css/style.css"/>
+		<script src="./scripts/pages/pagesjs.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -16,27 +17,12 @@
 					<img src="./images/azstatbooster.png" width="25%"/>
 					<h1>AnchyDev</h1>
 				</div>
-
-				<div class="menu">
-					<a href="./index.html">
-						<div class="menu-item active">Home</div>
-					</a>
-					<div class="menu-dropdown">
-						<div class="menu-item">Tools</div>
-						<div class="menu-dropdown-options">
-							<a href="./bitmask.html">
-								<div class="menu-item dropdown">Bitmask</div>
-							</a>
-						</div>
-					</div>
-					<a href="./contact.html">
-						<div class="menu-item">Contact</div>
-					</a>
-				</div>
+				<page-menu/>
 			</div>
 			<div class="content">
 				<div class="content-item">
-					<h1>Content</h1>
+					<div id="page-content"></div>
+					<page-container/>
 				</div>
 			</div>
 			<div class="footer">

@@ -88,6 +88,7 @@ body {
 }
 .menu-item:hover {
 	background-color: #e7e7e7;
+	cursor: pointer;
 }
 .menu-item.active {
 	background-color: dodgerblue;
