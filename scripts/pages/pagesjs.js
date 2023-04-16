@@ -13,31 +13,67 @@ class PageContainer extends HTMLElement
 
     getPage(index)
     {
-        return PageDefinitions.pages[index].href;
+        return PageDefinitions.pages[index];
     }
     async loadPageContent(index)
     {
-        let href = this.getPage(index);
+        let href = this.getPage(index).href;
         let content = await fetch(href).then(response => response.text());
         
         return content;
     }
     async loadPage(index)
     {
+        let page = this.getPage(index);
+
+        window.location.hash = "#" + page.name;
         let content = await this.loadPageContent(index);
         let scripts = PageDefinitions.pages[index].scripts;
+
         for(let script in scripts)
         {
+            let scriptId = "script-" + page.name;
+            if(document.querySelector("#" + scriptId))
+            {
+                // Don't re-add script if it already exists.
+                continue;
+            }
             let scriptSrc = scripts[script];
             let scriptTag = document.createElement('script');
+            scriptTag.type = "text/javascript";
             scriptTag.src = scriptSrc;
-            this.appendChild(scriptTag);
+            scriptTag.id = scriptId;
+            document.head.appendChild(scriptTag);
         }
+
         this.innerHTML = content;
+    }
+
+    getIndexFromHash()
+    {
+        let hash = window.location.hash;
+
+        for(let pageIndex in PageDefinitions.pages)
+        {
+            let page = PageDefinitions.pages[pageIndex];
+            if(hash === "#"+ page.name)
+            {
+                return pageIndex;
+            }
+        }
+
+        return null;
     }
 
     connectedCallback()
     {
+        let pageIndex = this.getIndexFromHash();
+
+        if(pageIndex)
+        {
+            this._currentPageIndex = pageIndex;
+        }
+
         this.loadPage(this._currentPageIndex);
     }
 }
