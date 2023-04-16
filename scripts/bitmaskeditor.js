@@ -30,29 +30,29 @@ button.onclick = function() {
   if(!bitmaskDefinition)
   {
     bitmaskMessage.innerHTML = "You need to enter a bitmask definition to edit.<br>";
+    return;
   }
-  else
+
+  var bitmasks = getBitmasksFromInput(bitmaskDefinition);
+
+  bitmaskMessage.innerHTML = "";
+
+  var editor = document.getElementById("BitmaskEditor");
+  var output = document.getElementById("BitmaskOutput");
+
+  var innerHtml = "";
+  for(var bitmask in bitmasks)
   {
-    var bitmasks = getBitmasksFromInput(bitmaskDefinition);
-
-    bitmaskMessage.innerHTML = "";
-
-    var editor = document.getElementById("BitmaskEditor");
-    var output = document.getElementById("BitmaskOutput");
-
-    var innerHtml = "";
-    for(var bitmask in bitmasks)
-    {
-      innerHtml += '<input id="Bitmask' + bitmask + '" type="checkbox"><label for="Bitmask' + bitmask + '"> ' + bitmasks[bitmask] + '</label><br>';
-    }
-    innerHtml += '<button id="BitmaskSubmitButton" class="nice-button">Generate</button><br>';
-    editor.innerHTML = innerHtml;
-
-    var submitButton = document.getElementById("BitmaskSubmitButton");
-    submitButton.onclick = function() {
-      innerHtml = "";
-      innerHtml = "<h3>Bitmask: " + getBitmaskFromMasks(bitmasks) + " </h3>";
-      output.innerHTML = innerHtml;
-    };
+    innerHtml += '<input id="Bitmask' + bitmask + '" type="checkbox"><label for="Bitmask' + bitmask + '"> ' + bitmasks[bitmask] + '</label><br>';
   }
+  innerHtml += '<button id="BitmaskSubmitButton" class="nice-button">Generate</button><br>';
+  editor.innerHTML = innerHtml;
+
+  var submitButton = document.getElementById("BitmaskSubmitButton");
+  submitButton.onclick = function() {
+    innerHtml = "";
+    innerHtml = "<h3>Bitmask: " + getBitmaskFromMasks(bitmasks) + " </h3>";
+    output.innerHTML = innerHtml;
+  };
+
 };
