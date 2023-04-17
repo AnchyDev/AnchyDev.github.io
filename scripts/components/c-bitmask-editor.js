@@ -1,9 +1,25 @@
-class BitmaskEditor extends HTMLElement 
+function displayError(msg)
 {
-    connectedCallback()
+    let errorMsg = document.getElementById("bitmask-error");
+
+    if(errorMsg)
     {
-        this.innerHTML = "BITMASK EDITOR!";
+        errorMsg.innerHTML = msg;
+        errorMsg.style.display = "block";
     }
 }
 
-customElements.define('bitmask-editor', BitmaskEditor);
+function hideError()
+{
+    let errorMsg = document.getElementById("bitmask-error");
+
+    if(errorMsg)
+    {
+        errorMsg.style.display = "none";
+    }
+}
+
+function bitmaskEditOnClick() 
+{
+    displayError("An unexpected error occurred!");
+}

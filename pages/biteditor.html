@@ -1,4 +1,23 @@
-<bitmask-editor></bitmask-editor>
+<style>
+    .bitmask-container {
+        background-color: white;
+    }
+    #bitmask-error {
+        color: red;
+        display: none;
+    }
+</style>
+
+<div class="bitmask-container">
+    <h1>Bitmask Editor</h1><br>
+    <h2>Settings</h2><br>
+
+    <label for="bitmask-data">Bitmask Data (Base64)</label><br>
+    <input type="text">
+    <button id="bitmask-edit" class="nice-button" onclick="bitmaskEditOnClick()">Edit</button>
+    <h3 id="bitmask-error"></h3>
+</div>
+<!--<bitmask-editor></bitmask-editor>-->
 <!--
 <h1>BitMask Editor</h1><br>
 <h2>Settings</h2><br>

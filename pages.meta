@@ -1,0 +1,23 @@
+[
+    {
+        "hashName": "home",
+        "niceName": "Home",
+        "isLanding": true,
+        "href": "./pages/home.html"
+    },
+    {
+        "hashName": "bit-editor",
+        "niceName": "Bitmask Editor",
+        "isLanding": false,
+        "href": "./pages/biteditor.html",
+        "scripts": [
+            "./scripts/components/c-bitmask-editor.js"
+        ]
+    },
+    {
+        "hashName": "contact",
+        "niceName": "Contact",
+        "isLanding": false,
+        "href": "./pages/contact.html"
+    }
+]
