@@ -67,6 +67,8 @@ class PageContainer extends HTMLElement
 
     connectedCallback()
     {
+        window.addEventListener("hashchange", () => { this.loadPage(this.getIndexFromHash()); });
+
         let pageIndex = this.getIndexFromHash();
 
         if(pageIndex)
@@ -78,43 +80,4 @@ class PageContainer extends HTMLElement
     }
 }
 
-class PageMenu extends HTMLElement
-{
-    async loadMenu()
-    {
-        let innerHtml = '<div class="menu">';
-        for(let index in PageDefinitions.pages)
-        {
-            let page = PageDefinitions.pages[index];
-            innerHtml += '<div id="page-' + page.name + '" class="menu-item">' + page.nice_name + '</div>';
-        }
-        innerHtml += '</div>';
-        this.innerHTML = innerHtml;
-    }
-
-    registerClickEvents()
-    {
-        for(let index in PageDefinitions.pages)
-        {
-            let page = PageDefinitions.pages[index];
-            let menuButton = document.getElementById("page-" + page.name);
-            if(!menuButton)
-            {
-                continue;
-            }
-
-            menuButton.addEventListener("click", function() {
-                document.getElementsByTagName("page-container")[0].loadPage(index);
-            });
-        }
-    }
-
-    connectedCallback()
-    {
-        this.loadMenu();
-        this.registerClickEvents();
-    }
-}
-
 customElements.define('page-container', PageContainer);
-customElements.define('page-menu', PageMenu);
