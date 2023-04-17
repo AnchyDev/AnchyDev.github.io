@@ -70,6 +70,8 @@ function bitmaskEditOnClick()
         return;
     }
 
+    console.log(bitmaskData);
+
     let bitmaskOptions = this.getBitmaskOptions(bitmaskData);
     if(bitmaskOptions.length < 1)
     {

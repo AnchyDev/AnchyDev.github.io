@@ -4,6 +4,8 @@
 
 	font-family: Arial;
     text-decoration: none;
+
+	/*outline: 1px solid limegreen !important;*/
 }
 
 @media screen and (max-width: 600px) {
